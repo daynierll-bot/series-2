@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Series</title>
+    <title>Catálogo de Series - Cubaflix25</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -16,7 +16,7 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Pantalla de Carga */
+        /* Pantalla de Carga Optimizada */
         #loader {
             position: fixed;
             inset: 0;
@@ -25,21 +25,19 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(229, 9, 20, 0.2);
-            border-top: 5px solid var(--accent);
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(229, 9, 20, 0.1);
+            border-top: 4px solid var(--accent);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         body {
             background-color: var(--bg-dark);
@@ -47,41 +45,30 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 20px;
-            opacity: 0; /* Empieza invisible para la animación */
-            transition: opacity 0.8s ease;
+            /* Eliminamos la opacidad 0 inicial para evitar parpadeos blancos */
         }
 
-        body.loaded {
-            opacity: 1;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 0 20px;
-        }
-
+        header { text-align: center; padding: 40px 0 20px; }
         header h1 {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            letter-spacing: 4px;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 700;
-            margin: 0;
             color: var(--accent);
         }
 
         .buscador-container {
-            max-width: 600px;
-            margin: 0 auto 50px;
+            max-width: 500px;
+            margin: 0 auto 40px;
             padding: 0 15px;
         }
 
         #inputBusqueda {
             width: 100%;
-            padding: 16px 25px;
+            padding: 14px 20px;
             font-size: 1rem;
             border: 1px solid #333;
             border-radius: 50px;
-            background-color: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.05);
             color: white;
             outline: none;
             transition: var(--transition);
@@ -90,13 +77,13 @@
 
         #inputBusqueda:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
         }
 
         .contenedor-principal {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -105,13 +92,6 @@
             display: flex;
             flex-direction: column;
             transition: var(--transition);
-            animation: slideUp 0.6s ease forwards;
-            opacity: 0;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .soporte a {
@@ -119,9 +99,9 @@
             border-radius: var(--radius);
             overflow: hidden;
             aspect-ratio: 2 / 3;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-            background-color: #111;
+            background-color: #1a1a1a; /* Color de fondo mientras carga la imagen */
             border: 1px solid rgba(255,255,255,0.05);
+            display: block;
         }
 
         .soporte img {
@@ -129,196 +109,138 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
+            display: block;
         }
 
-        .soporte:hover {
-            transform: translateY(-8px);
-        }
+        .soporte:hover { transform: translateY(-5px); }
+        .soporte:hover img { transform: scale(1.05); }
+        .soporte:hover a { border-color: var(--accent); }
 
-        .soporte:hover img {
-            transform: scale(1.1);
-        }
-
-        .soporte:hover a {
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
-        }
         .soporte p {
-            margin-top: 12px;
-            font-size: 0.85rem;
+            margin-top: 10px;
+            font-size: 0.8rem;
             color: var(--text-dim);
-            font-weight: 600;
             text-align: center;
-            text-transform: uppercase;
+            font-weight: 600;
         }
 
         @media (max-width: 480px) {
-            .contenedor-principal {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
+            .contenedor-principal { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="spinner"></div>
-    </div>
+    <div id="loader"><div class="spinner"></div></div>
 
-    <header>
-        <h1>CATÁLOGO DE SERIES</h1>
-    </header>
+    <header><h1>CATÁLOGO DE SERIES</h1></header>
 
     <div class="buscador-container">
         <input type="text" id="inputBusqueda" placeholder="Buscar una serie..." onkeyup="filtrarSeries()">
     </div>
-
     <div class="contenedor-principal">
-        <div class="soporte" style="animation-delay: 0.1s;">
-            <a href="AMERICAN HORROR.html"><img src="img/American_Horror_Story.jpg" alt="AHS"></a>
-            <p>AMERICAN HORROR STORY</p>
-        </div>
-        <div class="soporte" style="animation-delay: 0.15s;">
-            <a href="berlin.html"><img src="img/Berlín.jpg" alt="Berlin"></a>
-            <p>BERLIN</p>
-        </div>
-        <div class="soporte" style="animation-delay: 0.2s;">
-            <a href="estamos muertos.html"><img src="img/estamos muertos.jpg" alt="Estamos Muertos"></a>
-            <p>ESTAMOS MUERTOS</p>
-        </div>
-        <div class="soporte" style="animation-delay: 0.25s;">
-            <a href="euphoria.html"><img src="img/euphoria.jpg" alt="Euphoria"></a>
-            <p>EUPHORIA</p>
-        </div>
-        <div class="soporte" style="animation-delay: 0.3s;">
-            <a href="el internado.html"><img src="img/el internado.jpg" alt="El Internado"></a>
-            <p>EL INTERNADO</p>
-        </div>
-        <div class="soporte"><a href="absentia.html"><img src="https://play-lh.googleusercontent.com/CDFOPSvBdF4LITS45kITLyruWYw5vwwZkB_rj_leJbREaOXiKXEln5Fd6BgSCB8MRgtcFjGNwnvHT-NF86A"></a><p>ABSENTIA</p></div>
-        <div class="soporte"><a href="futurama.html"><img src="img/futurama.jpg"></a><p>FUTURAMA</p></div>
-        <div class="soporte"><a href="fish hooks.html"><img src="img/fish hooks.jpg"></a><p>FISH HOOKS</p></div>
-        <div class="soporte"><a href="frente costero.html"><img src="img/frente costero.jpg"></a><p>FRENTE COSTERO</p></div>
-        <div class="soporte"><a href="gravity falls.html"><img src="img/gravity falls.jpg"></a><p>GRAVITY FALLS</p></div>
-        <div class="soporte"><a href="gen v.html"><img src="img/gen v.jpg"></a><p>GEN V</p></div>
-        <div class="soporte"><a href="from.html"><img src="img/from.jpg"></a><p>FROM</p></div>
-        <div class="soporte"><a href="indomable.html"><img src="img/INDOMABLE.jpg"></a><p>INDOMABLE</p></div>
-        <div class="soporte"><a href="marianne.html"><img src="img/MARIANNE.jpg"></a><p>MARIANNE</p></div>
-        <div class="soporte"><a href="merlina.html"><img src="img/MERLINA.jpg"></a><p>MERLINA</p></div>
-        <div class="soporte"><a href="maxton hall.html"><img src="img/MAXTON HALL.jpg"></a><p>MAXTON HALL</p></div>
-        <div class="soporte"><a href="la casa del dragon.html"><img src="img/LA CASA DEL DRAGON.jpg"></a><p>LA CASA DEL DRAGÓN</p></div>
-        <div class="soporte"><a href="invencible.html"><img src="img/INVENCIBLE.jpg"></a><p>INVENCIBLE</p></div>
-        <div class="soporte"><a href="lucifer.html"><img src="img/LUCIFER.jpg"></a><p>LUCIFER</p></div>
-        <div class="soporte"><a href="nadie nos va a extrañar.html"><img src="img/NADIE NOS VA A EXTRAÑAR.jpg"></a><p>NADIE NOS VA A EXTRAÑAR</p></div>
-        <div class="soporte"><a href="mi vida con los chicos walter.html"><img src="img/MI VIDA CON LOS CHICOS WALTER.jpg"></a><p>MI VIDA CON LOS CHICOS WALTER</p></div>
-        <div class="soporte"><a href="peaky blinders.html"><img src="img/PEAKY BLINDERS.jpg"></a><p>PEAKY BLINDERS</p></div>
-        <div class="soporte"><a href="ragnarok.html"><img src="img/RAGNAROK.jpg"></a><p>RAGNAROK</p></div>
-        <div class="soporte"><a href="reacher.html"><img src="img/REACHER.jpg"></a><p>REACHER</p></div>
-        <div class="soporte"><a href="rick and morty.html"><img src="img/RICK AND MORTY.jpg"></a><p>RICK AND MORTY</p></div>
-        <div class="soporte"><a href="refugio atomico.html"><img src="img/REFUGIO ATOMICO.jpg"></a><p>REFUGIO ATOMICO</p></div>
-        <div class="soporte"><a href="reservatet.html"><img src="img/RESERVATET.jpg"></a><p>RESERVATET</p></div>
-        <div class="soporte"><a href="stranger things.html"><img src="img/STRANGER THINGS.jpg"></a><p>STRANGER THINGS</p></div>
-        <div class="soporte"><a href="the boys.html"><img src="img/THE BOYS.jpg"></a><p>THE BOYS</p></div>
-        <div class="soporte"><a href="sweet tooth.html"><img src="img/SWEETH TOOTH.jpg"></a><p>SWEETH TOOTH</p></div>
-        <div class="soporte"><a href="the last of us.html"><img src="img/THE LAST OF US.jpg"></a><p>THE LAST OF US</p></div>
-        <div class="soporte"><a href="the witcher.html"><img src="img/THE WITCHER.jpg"></a><p>THE WITCHER</p></div>
-        <div class="soporte"><a href="the sandman.html"><img src="img/THE SANDMAN.jpg."></a><p>THE SANDMAN</p></div>
-        <div class="soporte"><a href="welcome to derry.html"><img src="img/it-bienvenidos-a-derry-49306-c.jpg"></a><p>WELCOME TO DERRY</p></div>
-        <div class="soporte"><a href="tribus de europa.html"><img src="img/TRIBUS DE EUROPA.jpg"></a><p>TRIBUS DE EUROPA</p></div>
-        <div class="soporte"><a href="primal.html"><img src="img/primal.jpg"></a><p>PRIMAL</p></div>
-        <div class="soporte"><a href="asesinato para principiantes.html"><img src="img/asesinato para principiantes 1.jpg"></a><p>ASESINATO PARA PRINCIPIANTES</p></div>
-        <div class="soporte"><a href="bienvenidos al eden.html"><img src="img/BIENVENIDOS A EDEN.jpg"></a><p>BIENVENIDOS A EDEN</p></div>
-        <div class="soporte"><a href="black mirror.html"><img src="img/BLACK MIRRROR.jpg"></a><p>BLACK MIRRROR</p></div>
-        <div class="soporte"><a href="breaking bad.html"><img src="img/BREAKING BAD.jpg"></a><p>BREAKING BAD</p></div>
-        <div class="soporte"><a href="bridgerton.html"><img src="img/BRIDGERTON.jpg"></a><p>BRIDGERTON</p></div>
-        <div class="soporte"><a href="lupin.html"><img src="img/LUPIN.jpg"></a><p>LUPIN</p></div>
-        <div class="soporte"><a href="mayfair.html"><img src="img/MAYFAIR.jpg"></a><p>LAS BRUJAS DE MAYFAIR</p></div>
-        <div class="soporte"><a href="solo leveling.html"><img src="img/SOLO LEVELING.jpg"></a><p>SOLO LEVELING</p></div>
-        <div class="soporte"><a href="the good doctor.html"><img src="img/THE GOOD DOCTOR.jpg"></a><p>THE GOOD DOCTOR</p></div>
-        <div class="soporte"><a href="fallout.html"><img src="img/FALLOUT.jpg"></a><p>FALLOUT</p></div>
-        <div class="soporte"><a href="alice in borderlands.html"><img src="img/ALICE IN BORDERLANDS.jpg"></a><p>ALICE IN BORDERLANDS</p></div>
-        <div class="soporte"><a href="gambito de dama.html"><img src="img/gambito.jpg"></a><p>GAMBITO DE DAMA</p></div>
-        <div class="soporte"><a href="adolescence.html"><img src="adolescence.jpg"></a><p>ADOLESCENCE</p></div>
-        <div class="soporte"><a href="arcane.html"><img src="img/arcane.jpg"></a><p>ARCANE</p></div>
-        <div class="soporte"><a href="halo.html"><img src="img/halo.jpg"></a><p>HALO</p></div>
-        <div class="soporte"><a href="juego de tronos.html"><img src="img/JUEGO DE TRONO.jpg"></a><p>JUEGO DE TRONOS</p></div>
-        <div class="soporte"><a href="vikingos.html"><img src="img/vikingos.jpg"></a><p>VIKINGOS</p></div>
-        <div class="soporte"><a href="mounstruos.html"><img src="img/monsters.jpg"></a><p>MONSTRUOS</p></div>
-        <div class="soporte"><a href="sexo vida.html"><img src="img/sexo vida.jpg"></a><p>SEXO VIDA</p></div>
-        <div class="soporte"><a href="sky rojo.html"><img src="img/SKY ROJO.jpg"></a><p>SKY ROJO</p></div>
-        <div class="soporte"><a href="sex education.html"><img src="img/SEX EDU.jpg"></a><p>SEX EDUCATION</p></div>
-        <div class="soporte"><a href="dahmer.html"><img src="img/DAHMER.jpg"></a><p>DAHMER</p></div>
-        <div class="soporte"><a href="smallville.html"><img src="img/smallville.jpg"></a><p>SMALLVILLE</p></div>
-        <div class="soporte"><a href="hunter x hunter.html"><img src="img/Hunter_×_Hunter_(2011).png"></a><p>HUNTER X HUNTER</p></div>
-        <div class="soporte"><a href="el juego del calamar.html"><img src="img/EL JEUGO.jpg"></a><p>EL JUEGO DEL CALAMAR</p></div>
-        <div class="soporte"><a href="emily en paris.html"><img src="img/EMILI.jpg"></a><p>EMILY IN PARIS</p></div>
-        <div class="soporte"><a href="hunters.html"><img src="img/HUNTERS.jpg"></a><p>HUNTERS</p></div>
-        <div class="soporte"><a href="the crown.html"><img src="img/THE CROWN.jpg"></a><p>THE CROWN</p></div>
-        <div class="soporte"><a href="outer banks.html"><img src="img/OUTER BANKS.jpg"></a><p>OUTER BANKS</p></div>
-        <div class="soporte"><a href="ponies.html"><img src="img/ponies.jpg"></a><p>PONIES</p></div>
-        <div class="soporte"><a href="esta mierda me supera.html"><img src="img/ESTA MIERDA.jpg"></a><p>ESTA MIERDA ME SUPERA</p></div>
-        <div class="soporte"><a href="hillhouse.html"><img src="img/LA MALDICION.jpg"></a><p>LA MALDICION DE HILLHOUSE</p></div>
-        <div class="soporte"><a href="lord of the ring.html"><img src="img/Poster_Los_Anillos_de_Poder_t2_Galadriel.png"></a><p>El Señor de los Anillos: los Anillos de Poder</p></div>
-        <div class="soporte"><a href="la casa de papel.html"><img src="img/lacasa.jpg"></a><p>LA CASA DE PAPEL</p></div>
-        <div class="soporte"><a href="misa de medianoche.html"><img src="img/misa.jpg"></a><p>MISA DE MEDIANOCHE</p></div>
-        <div class="soporte"><a href="record of ragnarok.html"><img src="img/RECORD.jpg"></a><p>RECORD OF RAGNAROK</p></div>
-        <div class="soporte"><a href="solar oposites.html"><img src="img/SOLAR.jpg"></a><p>SOLAR OPPOSITES</p></div>
-        <div class="soporte"><a href="desencanto.html"><img src="img/DESENCANTO.jpg"></a><p>DESENCANTO</p></div>
-        <div class="soporte"><a href="el y ella.html"><img src="img/el y ella.jpg"></a><p>EL Y ELLA</p></div>
-        <div class="soporte"><a href="lobo morir matando.html"><img src="img/Lobo,_morir_matando.jpg"></a><p>LOBO MORIR MATANDO</p></div>
-        <div class="soporte"><a href="el caballero de los 7 reinos.html"><img src="img/el caballero de los 7 reinos.jpg"></a><p>EL CABALLERO DE LOS 7 REINOS</p></div>
-        <div class="soporte"><a href="avatar la leyende de aang.html"><img src="img/Avatar_La_leyenda_de_Aang_Serie_de_TV-291647715-large.jpg"></a><p>AVATAR: LA LEYENDA DE AANG</p></div>
-        <div class="soporte"><a href="the 100.html"><img src="img/the 100.jpg"></a><p>THE 100</p></div>
-        <div class="soporte"><a href="dark.html"><img src="img/dark.jpg"></a><p>DARK</p></div>
-        <div class="soporte"><a href="agente nocturno.html"><img src="img/agente nocturno.jpg"></a><p>AGENTE NOCTURNO</p></div>
-        <div class="soporte"><a href="shogun.html"><img src="img/shogun.jpg"></a><p>SHOGUN</p></div>
-        
-        
-        
-        
-
-        
-
-        
-
-
-
-
-        
-        
-
-        
-
-        
-
-        
-        
-        
-        
-
-      
-      
+        <div class="soporte"><a href="AMERICAN HORROR.html"><img src="img/American_Horror_Story.jpg" alt="AHS" loading="lazy"></a><p>AMERICAN HORROR STORY</p></div>
+        <div class="soporte"><a href="berlin.html"><img src="img/Berlín.jpg" alt="Berlin" loading="lazy"></a><p>BERLIN</p></div>
+        <div class="soporte"><a href="estamos muertos.html"><img src="img/estamos muertos.jpg" alt="Estamos Muertos" loading="lazy"></a><p>ESTAMOS MUERTOS</p></div>
+        <div class="soporte"><a href="euphoria.html"><img src="img/euphoria.jpg" alt="Euphoria" loading="lazy"></a><p>EUPHORIA</p></div>
+        <div class="soporte"><a href="el internado.html"><img src="img/el internado.jpg" alt="El Internado" loading="lazy"></a><p>EL INTERNADO</p></div>
+        <div class="soporte"><a href="absentia.html"><img src="img/absentia.jpg" alt="Absentia" loading="lazy"></a><p>ABSENTIA</p></div>
+        <div class="soporte"><a href="futurama.html"><img src="img/futurama.jpg" loading="lazy"></a><p>FUTURAMA</p></div>
+        <div class="soporte"><a href="fish hooks.html"><img src="img/fish hooks.jpg" loading="lazy"></a><p>FISH HOOKS</p></div>
+        <div class="soporte"><a href="frente costero.html"><img src="img/frente costero.jpg" loading="lazy"></a><p>FRENTE COSTERO</p></div>
+        <div class="soporte"><a href="gravity falls.html"><img src="img/gravity falls.jpg" loading="lazy"></a><p>GRAVITY FALLS</p></div>
+        <div class="soporte"><a href="gen v.html"><img src="img/gen v.jpg" loading="lazy"></a><p>GEN V</p></div>
+        <div class="soporte"><a href="from.html"><img src="img/from.jpg" loading="lazy"></a><p>FROM</p></div>
+        <div class="soporte"><a href="indomable.html"><img src="img/INDOMABLE.jpg" loading="lazy"></a><p>INDOMABLE</p></div>
+        <div class="soporte"><a href="marianne.html"><img src="img/MARIANNE.jpg" loading="lazy"></a><p>MARIANNE</p></div>
+        <div class="soporte"><a href="merlina.html"><img src="img/MERLINA.jpg" loading="lazy"></a><p>MERLINA</p></div>
+        <div class="soporte"><a href="maxton hall.html"><img src="img/MAXTON HALL.jpg" loading="lazy"></a><p>MAXTON HALL</p></div>
+        <div class="soporte"><a href="la casa del dragon.html"><img src="img/LA CASA DEL DRAGON.jpg" loading="lazy"></a><p>LA CASA DEL DRAGÓN</p></div>
+        <div class="soporte"><a href="invencible.html"><img src="img/INVENCIBLE.jpg" loading="lazy"></a><p>INVENCIBLE</p></div>
+        <div class="soporte"><a href="lucifer.html"><img src="img/LUCIFER.jpg" loading="lazy"></a><p>LUCIFER</p></div>
+        <div class="soporte"><a href="nadie nos va a extrañar.html"><img src="img/NADIE NOS VA A EXTRAÑAR.jpg" loading="lazy"></a><p>NADIE NOS VA A EXTRAÑAR</p></div>
+        <div class="soporte"><a href="mi vida con los chicos walter.html"><img src="img/MI VIDA CON LOS CHICOS WALTER.jpg" loading="lazy"></a><p>MI VIDA CON LOS CHICOS WALTER</p></div>
+        <div class="soporte"><a href="peaky blinders.html"><img src="img/PEAKY BLINDERS.jpg" loading="lazy"></a><p>PEAKY BLINDERS</p></div>
+        <div class="soporte"><a href="ragnarok.html"><img src="img/RAGNAROK.jpg" loading="lazy"></a><p>RAGNAROK</p></div>
+        <div class="soporte"><a href="reacher.html"><img src="img/REACHER.jpg" loading="lazy"></a><p>REACHER</p></div>
+        <div class="soporte"><a href="rick and morty.html"><img src="img/RICK AND MORTY.jpg" loading="lazy"></a><p>RICK AND MORTY</p></div>
+        <div class="soporte"><a href="refugio atomico.html"><img src="img/REFUGIO ATOMICO.jpg" loading="lazy"></a><p>REFUGIO ATOMICO</p></div>
+        <div class="soporte"><a href="reservatet.html"><img src="img/RESERVATET.jpg" loading="lazy"></a><p>RESERVATET</p></div>
+        <div class="soporte"><a href="stranger things.html"><img src="img/STRANGER THINGS.jpg" loading="lazy"></a><p>STRANGER THINGS</p></div>
+        <div class="soporte"><a href="the boys.html"><img src="img/THE BOYS.jpg" loading="lazy"></a><p>THE BOYS</p></div>
+        <div class="soporte"><a href="sweet tooth.html"><img src="img/SWEETH TOOTH.jpg" loading="lazy"></a><p>SWEETH TOOTH</p></div>
+        <div class="soporte"><a href="the last of us.html"><img src="img/THE LAST OF US.jpg" loading="lazy"></a><p>THE LAST OF US</p></div>
+        <div class="soporte"><a href="the witcher.html"><img src="img/THE WITCHER.jpg" loading="lazy"></a><p>THE WITCHER</p></div>
+        <div class="soporte"><a href="the sandman.html"><img src="img/THE SANDMAN.jpg" loading="lazy"></a><p>THE SANDMAN</p></div>
+        <div class="soporte"><a href="welcome to derry.html"><img src="img/it-bienvenidos-a-derry-49306-c.jpg" loading="lazy"></a><p>WELCOME TO DERRY</p></div>
+        <div class="soporte"><a href="tribus de europa.html"><img src="img/TRIBUS DE EUROPA.jpg" loading="lazy"></a><p>TRIBUS DE EUROPA</p></div>
+        <div class="soporte"><a href="primal.html"><img src="img/primal.jpg" loading="lazy"></a><p>PRIMAL</p></div>
+        <div class="soporte"><a href="asesinato para principiantes.html"><img src="img/asesinato para principiantes 1.jpg" loading="lazy"></a><p>ASESINATO PARA PRINCIPIANTES</p></div>
+        <div class="soporte"><a href="bienvenidos al eden.html"><img src="img/BIENVENIDOS A EDEN.jpg" loading="lazy"></a><p>BIENVENIDOS A EDEN</p></div>
+        <div class="soporte"><a href="black mirror.html"><img src="img/BLACK MIRRROR.jpg" loading="lazy"></a><p>BLACK MIRRROR</p></div>
+        <div class="soporte"><a href="breaking bad.html"><img src="img/BREAKING BAD.jpg" loading="lazy"></a><p>BREAKING BAD</p></div>
+        <div class="soporte"><a href="bridgerton.html"><img src="img/BRIDGERTON.jpg" loading="lazy"></a><p>BRIDGERTON</p></div>
+        <div class="soporte"><a href="lupin.html"><img src="img/LUPIN.jpg" loading="lazy"></a><p>LUPIN</p></div>
+        <div class="soporte"><a href="mayfair.html"><img src="img/MAYFAIR.jpg" loading="lazy"></a><p>LAS BRUJAS DE MAYFAIR</p></div>
+        <div class="soporte"><a href="solo leveling.html"><img src="img/SOLO LEVELING.jpg" loading="lazy"></a><p>SOLO LEVELING</p></div>
+        <div class="soporte"><a href="the good doctor.html"><img src="img/THE GOOD DOCTOR.jpg" loading="lazy"></a><p>THE GOOD DOCTOR</p></div>
+        <div class="soporte"><a href="fallout.html"><img src="img/FALLOUT.jpg" loading="lazy"></a><p>FALLOUT</p></div>
+        <div class="soporte"><a href="alice in borderlands.html"><img src="img/ALICE IN BORDERLANDS.jpg" loading="lazy"></a><p>ALICE IN BORDERLANDS</p></div>
+        <div class="soporte"><a href="gambito de dama.html"><img src="img/gambito.jpg" loading="lazy"></a><p>GAMBITO DE DAMA</p></div>
+        <div class="soporte"><a href="adolescence.html"><img src="img/adolescence.jpg" loading="lazy"></a><p>ADOLESCENCE</p></div>
+        <div class="soporte"><a href="arcane.html"><img src="img/arcane.jpg" loading="lazy"></a><p>ARCANE</p></div>
+        <div class="soporte"><a href="halo.html"><img src="img/halo.jpg" loading="lazy"></a><p>HALO</p></div>
+        <div class="soporte"><a href="juego de tronos.html"><img src="img/JUEGO DE TRONO.jpg" loading="lazy"></a><p>JUEGO DE TRONOS</p></div>
+        <div class="soporte"><a href="vikingos.html"><img src="img/vikingos.jpg" loading="lazy"></a><p>VIKINGOS</p></div>
+        <div class="soporte"><a href="mounstruos.html"><img src="img/monsters.jpg" loading="lazy"></a><p>MONSTRUOS</p></div>
+        <div class="soporte"><a href="sexo vida.html"><img src="img/sexo vida.jpg" loading="lazy"></a><p>SEXO VIDA</p></div>
+        <div class="soporte"><a href="sky rojo.html"><img src="img/SKY ROJO.jpg" loading="lazy"></a><p>SKY ROJO</p></div>
+        <div class="soporte"><a href="sex education.html"><img src="img/SEX EDU.jpg" loading="lazy"></a><p>SEX EDUCATION</p></div>
+        <div class="soporte"><a href="dahmer.html"><img src="img/DAHMER.jpg" loading="lazy"></a><p>DAHMER</p></div>
+        <div class="soporte"><a href="smallville.html"><img src="img/smallville.jpg" loading="lazy"></a><p>SMALLVILLE</p></div>
+        <div class="soporte"><a href="hunter x hunter.html"><img src="img/Hunter_×_Hunter_(2011).png" loading="lazy"></a><p>HUNTER X HUNTER</p></div>
+        <div class="soporte"><a href="el juego del calamar.html"><img src="img/EL JEUGO.jpg" loading="lazy"></a><p>EL JUEGO DEL CALAMAR</p></div>
+        <div class="soporte"><a href="emily en paris.html"><img src="img/EMILI.jpg" loading="lazy"></a><p>EMILY IN PARIS</p></div>
+        <div class="soporte"><a href="hunters.html"><img src="img/HUNTERS.jpg" loading="lazy"></a><p>HUNTERS</p></div>
+        <div class="soporte"><a href="the crown.html"><img src="img/THE CROWN.jpg" loading="lazy"></a><p>THE CROWN</p></div>
+        <div class="soporte"><a href="outer banks.html"><img src="img/OUTER BANKS.jpg" loading="lazy"></a><p>OUTER BANKS</p></div>
+        <div class="soporte"><a href="ponies.html"><img src="img/ponies.jpg" loading="lazy"></a><p>PONIES</p></div>
+        <div class="soporte"><a href="esta mierda me supera.html"><img src="img/ESTA MIERDA.jpg" loading="lazy"></a><p>ESTA MIERDA ME SUPERA</p></div>
+        <div class="soporte"><a href="hillhouse.html"><img src="img/LA MALDICION.jpg" loading="lazy"></a><p>LA MALDICION DE HILLHOUSE</p></div>
+        <div class="soporte"><a href="lord of the ring.html"><img src="img/Poster_Los_Anillos_de_Poder_t2_Galadriel.png" loading="lazy"></a><p>EL SEÑOR DE LOS ANILLOS</p></div>
+        <div class="soporte"><a href="la casa de papel.html"><img src="img/lacasa.jpg" loading="lazy"></a><p>LA CASA DE PAPEL</p></div>
+        <div class="soporte"><a href="misa de medianoche.html"><img src="img/misa.jpg" loading="lazy"></a><p>MISA DE MEDIANOCHE</p></div>
+        <div class="soporte"><a href="record of ragnarok.html"><img src="img/RECORD.jpg" loading="lazy"></a><p>RECORD OF RAGNAROK</p></div>
+        <div class="soporte"><a href="solar oposites.html"><img src="img/SOLAR.jpg" loading="lazy"></a><p>SOLAR OPPOSITES</p></div>
+        <div class="soporte"><a href="desencanto.html"><img src="img/DESENCANTO.jpg" loading="lazy"></a><p>DESENCANTO</p></div>
+        <div class="soporte"><a href="el y ella.html"><img src="img/el y ella.jpg" loading="lazy"></a><p>EL Y ELLA</p></div>
+        <div class="soporte"><a href="lobo morir matando.html"><img src="img/Lobo,_morir_matando.jpg" loading="lazy"></a><p>LOBO MORIR MATANDO</p></div>
+        <div class="soporte"><a href="el caballero de los 7 reinos.html"><img src="img/el caballero de los 7 reinos.jpg" loading="lazy"></a><p>EL CABALLERO DE LOS 7 REINOS</p></div>
+        <div class="soporte"><a href="avatar la leyende de aang.html"><img src="img/Avatar_La_leyenda_de_Aang_Serie_de_TV-291647715-large.jpg" loading="lazy"></a><p>AVATAR: LA LEYENDA DE AANG</p></div>
+        <div class="soporte"><a href="the 100.html"><img src="img/the 100.jpg" loading="lazy"></a><p>THE 100</p></div>
+        <div class="soporte"><a href="dark.html"><img src="img/dark.jpg" loading="lazy"></a><p>DARK</p></div>
+        <div class="soporte"><a href="agente nocturno.html"><img src="img/agente nocturno.jpg" loading="lazy"></a><p>AGENTE NOCTURNO</p></div>
+        <div class="soporte"><a href="shogun.html"><img src="img/shogun.jpg" loading="lazy"></a><p>SHOGUN</p></div>
     </div>
 
     <script>
-        // Función de Búsqueda
+        // Búsqueda más eficiente
         function filtrarSeries() {
-            let input = document.getElementById('inputBusqueda').value.toLowerCase();
-            let series = document.getElementsByClassName('soporte');
-            for (let i = 0; i < series.length; i++) {
-                let nombreSerie = series[i].getElementsByTagName('p')[0].innerText.toLowerCase();
-                series[i].style.display = nombreSerie.includes(input) ? "flex" : "none";
-            }
+            const input = document.getElementById('inputBusqueda').value.toLowerCase();
+            const series = document.querySelectorAll('.soporte');
+            series.forEach(serie => {
+                const nombreSerie = serie.querySelector('p').innerText.toLowerCase();
+                serie.style.display = nombreSerie.includes(input) ? "flex" : "none";
+            });
         }
-
-        // Control del Cargador
-        window.addEventListener('load', () => {
+        // Control del Cargador: Usamos DOMContentLoaded en lugar de load
+        // Esto hace que el loader desaparezca en cuanto el HTML esté listo, sin esperar a los posters
+        document.addEventListener('DOMContentLoaded', () => {
             const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            document.body.classList.add('loaded');
             setTimeout(() => {
-                loader.style.display = 'none';
-            }, 500);
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 400);
+            }, 300); // Pequeño margen para suavidad
         });
     </script>
 </body>
