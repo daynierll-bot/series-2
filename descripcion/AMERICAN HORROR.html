@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Serie | American Horror Stories</title>
+    <style>
+        :root {
+            --primary-color: #E50914;
+            --bg-color: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        /* Diseño del Poster */
+        .poster-container {
+            flex: 1;
+            position: relative;
+            transition: transform 0.4s ease;
+            min-width: 300px;
+        }
+
+        .poster-container:hover {
+            transform: scale(1.02);
+        }
+
+        .poster-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: block;
+        }
+
+        /* Información */
+        .info {
+            flex: 1.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            line-height: 1.1;
+        }
+
+        .meta-tags {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #333;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            max-height: 400px; /* Para que no sea infinita hacia abajo */
+            overflow-y: auto; /* Scroll interno si el texto es muy largo */
+            padding-right: 15px;
+        }
+
+        /* Scrollbar personalizado para la descripción */
+        .description::-webkit-scrollbar {
+            width: 5px;
+        }
+        .description::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .description strong {
+            color: #fff;
+        }
+
+        /* Botones */
+        .actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .btn-play {
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-play:hover {
+            background-color: #b20710;
+            transform: translateY(-2px);
+        }
+
+        .volver {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+        .volver:hover {
+            color: white;
+            border-bottom: 1px solid white;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 850px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                margin: 20px;
+            }
+            .info { align-items: center; }
+            .meta-tags { justify-content: center; }
+            .poster-container { max-width: 350px; margin: 0 auto; }
+            .description { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="poster-container">
+            <img src="../img/American_Horror_Story.jpg" alt="Portada de American Horror Story">
+        </div>
+
+        <div class="info">
+            <div class="meta-tags">
+                <span class="tag">Serie Antológica</span>
+                <span class="tag">Terror</span>
+                <span class="tag">4K Ultra HD</span>
+            </div>
+            
+            <h1>American Horror Stories</h1>
+
+            <div class="description">
+                <strong>American Horror Story (AHS)</strong> es una de las series más influyentes del género de terror moderno. Creada por Ryan Murphy y Brad Falchuk, cada temporada funciona como una miniserie independiente con su propio inicio, nudo y desenlace.
+                <br><br>
+                A través de sus temporadas icónicas como <em>Murder House</em>, <em>Asylum</em> o <em>Coven</em>, la serie explora mitos y leyendas estadounidenses, crímenes reales y una estética visual perturbadora.
+                <br><br>
+                Lo más destacado es su <strong>reparto recurrente</strong>: actores como Evan Peters y Sarah Paulson se transforman radicalmente cada año, conectando sutilmente un universo oscuro y compartido.
+            </div>
+
+            <div class="actions">
+                <a href="#" class="btn-play">▶️ Reproducir</a>
+                <a href="../series.html" class="volver">Volver al catálogo</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

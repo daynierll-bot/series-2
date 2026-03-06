@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Película</title>
+    <style>
+        
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+        .reproductor {
+            width: 25%;
+            height: 450px;
+            background: #141414;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #333;
+            margin-bottom: 20px;
+          
+        }
+        .info {
+            max-width: 80%;
+            text-align: left;
+        }
+        h1 { color: #E50914; }
+        .volver {
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 10px 20px;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+        .volver:hover { background: white; color: black; }
+        .info p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #d4d4d4;
+            background: linear-gradient(90deg, rgba(229, 9, 20, 0.05) 0%, rgba(0,0,0,0) 100%);
+            padding: 25px;
+            border-left: 5px solid #E50914;
+            border-radius: 0 8px 8px 0;
+        } 
+        
+    </style>
+</head>
+<body>
+
+    <div class="reproductor">
+        <img src="img/absentia.jpg" width="500" height="450" alt="">
+    </div>
+
+    <div class="info">
+        <h1>ABSENTIA</h1>
+        <p>Absentia es una serie intensa que juega constantemente con la paranoia del espectador.
+​Aquí tienes el resumen de la trama:
+​El Punto de Partida
+​La serie sigue a Emily Byrne (Stana Katic), una brillante agente del FBI que desaparece sin dejar rastro mientras perseguía a uno de los asesinos en serie más peligrosos de Boston. Tras seis años de búsqueda infructuosa, es declarada muerta legalmente.
+​El giro ocurre cuando, de la nada, Emily es encontrada con vida en una cabaña abandonada en el bosque, encerrada en un tanque de agua y al borde de la muerte.</p>
+    </div>
+
+    <a href="series.html" class="volver">Volver al catálogo</a>
+
+</body>
+</html>

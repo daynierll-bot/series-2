@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Película</title>
+    <style>
+        
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+        .reproductor {
+            width: 25%;
+            height: 450px;
+            background: #141414;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #333;
+            margin-bottom: 20px;
+          
+        }
+        .info {
+            max-width: 80%;
+            text-align: left;
+        }
+        h1 { color: #E50914; }
+        .volver {
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 10px 20px;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+        .volver:hover { background: white; color: black; }
+        .info p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #d4d4d4;
+            background: linear-gradient(90deg, rgba(229, 9, 20, 0.05) 0%, rgba(0,0,0,0) 100%);
+            padding: 25px;
+            border-left: 5px solid #E50914;
+            border-radius: 0 8px 8px 0;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="reproductor">
+        <img src="img/INDOMABLE.jpg" width="500" height="450" alt="">
+    </div>
+
+    <div class="info">
+        <h1>INDOMABLE</h1>
+ <p>Kyle Turner es un agente especial que trabaja como investigador del Servicio de Parques Nacionales. Cuando se descubre un asesinato en el parque nacional de Yosemite, se ve envuelto en una investigación que indaga en los secretos ocultos del parque y le obliga a enfrentarse a los fantasmas de su propio pasado.</p>
+    </div>
+
+    <a href="series.html" class="volver">Volver al catálogo</a>
+
+</body>
+</html>
