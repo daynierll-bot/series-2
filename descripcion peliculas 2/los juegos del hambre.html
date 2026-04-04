@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Serie | Berlín</title>
+    <style>
+        :root {
+            --primary-color: #E50914;
+            --bg-color: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        /* Diseño del Poster */
+        .poster-container {
+            flex: 1;
+            position: relative;
+            transition: transform 0.4s ease;
+            min-width: 320px;
+        }
+
+        .poster-container:hover {
+            transform: scale(1.03);
+        }
+
+        .poster-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: block;
+        }
+
+        /* Información */
+        .info {
+            flex: 1.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .meta-tags {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #333;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .description strong {
+            color: #fff;
+        }
+
+        /* Botones */
+        .actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .btn-play {
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-play:hover {
+            background-color: #b20710;
+            transform: translateY(-2px);
+        }
+
+        .volver {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .volver:hover {
+            color: white;
+            border-bottom: 1px solid white;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 850px) {
+            .container {flex-direction: column;
+                padding: 25px;
+                text-align: center;
+            }
+            .info { align-items: center; }
+            .meta-tags { justify-content: center; }
+            .poster-container { max-width: 300px; margin: 0 auto; }
+            .description { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="poster-container">
+            <img src="../IMAGEN PELICULAS 2/los juegos del hambre.jpg" alt="">
+        </div>
+
+        <div class="info">
+            <div class="meta-tags">
+                <span class="tag">PELICULA</span>
+                <span class="tag">CIENCIA FICCIÓN</span>
+                <span class="tag">AVENTURA</span>
+                <span class="tag">HD</span>
+            </div>
+        
+            <h1>LOS JUEGOS DEL HAMBRE</h1>
+
+            <div class="description">
+           <p>Narra la historia de Katniss Everdeen, una adolescente que vive en la nación postapocalíptica de Panem, donde un gobierno autoritario obliga a los niños de cada distrito a participar en un combate a muerte televisado llamado Los Juegos del Hambre.</p>
+            </div>
+
+            <div class="actions">
+                <a href="#" class="btn-play"><span>▶️</span> Ver Ahora</a>
+                <a href="../catalogo de peliculas.html" class="volver">Volver al catálogo</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
