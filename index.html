@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATÁLOGO SERIES Y PELICULAS DAYNIER</title>
+    <title>CATÁLOGO SERIES Y PELICULAS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --accent-color: #ffffff; /* Color de acento (Blanco puro para elegancia) */
+            --accent-color: #ffffff; 
             --bg-color: #050505;
             --transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -24,10 +24,9 @@
             color: white;
         }
 
-        /* Título superior minimalista */
         .main-header {
             position: absolute;
-            top: 50px;
+            top: 40px;
             width: 100%;
             text-align: center;
             z-index: 10;
@@ -37,13 +36,13 @@
 
         .main-header h1 {
             font-weight: 900;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            opacity: 0.8;
+            opacity: 0.7;
             margin: 0;
         }
 
-        /* Contenedor de Pantalla Dividida */
+        /* Contenedor ajustado para 3 secciones */
         .split-container {
             display: flex;
             width: 100%;
@@ -61,18 +60,16 @@
             transition: var(--transition);
         }
 
-        /* Imagen con zoom sutil */
         .pane-img {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.5) scale(1.05);
+            filter: brightness(0.4) scale(1.05);
             transition: var(--transition);
             z-index: 1;
         }
 
-        /* Degradado de profundidad */
         .pane-overlay {
             position: absolute;
             inset: 0;
@@ -85,10 +82,11 @@
             position: relative;
             z-index: 3;
             text-align: center;
+            padding: 20px;
         }
 
         .pane-content h2 {
-            font-size: 5vw;
+            font-size: 4vw; /* Un poco más pequeño para que quepan 3 */
             font-weight: 900;
             text-transform: uppercase;
             margin: 0;
@@ -98,7 +96,7 @@
         }
 
         .pane-content p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 3px;
             margin-top: 10px;
             text-transform: uppercase;
@@ -107,18 +105,13 @@
             transition: var(--transition);
         }
 
-        /* --- EFECTOS INTERACTIVOS --- */
-
+        /* Hover: El panel seleccionado crece mientras los otros se encogen */
         .pane:hover {
-            flex: 1.6; /* Expansión más agresiva */
+            flex: 2; 
         }
 
         .pane:hover .pane-img {
-            filter: brightness(0.7) scale(1);
-        }
-
-        .pane:hover .pane-overlay {
-            background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.4) 100%);
+            filter: brightness(0.6) scale(1);
         }
 
         .pane:hover .pane-content h2 {
@@ -131,30 +124,31 @@
             transform: translateY(0);
         }
 
-        /* Línea divisoria central */
-        .pane:first-child::after {
+        /* Líneas divisorias (solo visibles entre paneles) */
+        .pane:not(:last-child)::after {
             content: '';
             position: absolute;
             right: 0;
-            top: 20%;
-            bottom: 20%;
+            top: 25%;
+            bottom: 25%;
             width: 1px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             z-index: 4;
         }
-        /* Mobile */
+
+        /* Responsive Mobile */
         @media (max-width: 768px) {
             .split-container { flex-direction: column; }
-            .pane-content h2 { font-size: 3rem; }
-            .pane:hover { flex: 1.2; }
-            .pane:first-child::after { display: none; }
+            .pane-content h2 { font-size: 2.5rem; }
+            .pane:hover { flex: 1.5; }
+            .pane:not(:last-child)::after { display: none; }
+            .main-header { top: 20px; }
         }
     </style>
 </head>
 <body>
-
-    <header class="main-header">
-        <h1>Selecciona Categoría</h1>
+ <header class="main-header">
+        <h1>Explorar Catálogo</h1>
     </header>
 
     <div class="split-container">
@@ -174,6 +168,15 @@
             <div class="pane-content">
                 <h2>PELICULAS</h2>
                 <p>Estrenos mundiales</p>
+            </div>
+        </a>
+
+        <a href="animados.html" class="pane">
+            <div class="pane-img" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop');"></div>
+            <div class="pane-overlay"></div>
+            <div class="pane-content">
+                <h2>ANIMADOS</h2>
+                <p>Animación y fantasía</p>
             </div>
         </a>
 

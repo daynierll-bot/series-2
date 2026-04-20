@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de peliculas animadas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent: #E50914;
+            --bg-dark: #0a0a0a;
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
+            --radius: 8px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Pantalla de Carga Optimizada */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.4s ease;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(229, 9, 20, 0.1);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            /* Eliminamos la opacidad 0 inicial para evitar parpadeos blancos */
+        }
+
+        header { text-align: center; padding: 40px 0 20px; }
+        header h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .buscador-container {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            padding: 0 15px;
+        }
+
+        #inputBusqueda {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            border: 1px solid #333;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            transition: var(--transition);
+            box-sizing: border-box;
+        }
+
+        #inputBusqueda:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .contenedor-principal {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .soporte {
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .soporte a {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 2 / 3;
+            background-color: #1a1a1a; /* Color de fondo mientras carga la imagen */
+            border: 1px solid rgba(255,255,255,0.05);
+            display: block;
+        }
+
+        .soporte img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .soporte:hover { transform: translateY(-5px); }
+        .soporte:hover img { transform: scale(1.05); }
+        .soporte:hover a { border-color: var(--accent); }
+
+        .soporte p {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .contenedor-principal { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader"><div class="spinner"></div></div>
+
+    <header><h1>CATÁLOGO DE SERIES</h1></header>
+
+    <div class="buscador-container">
+        <input type="text" id="inputBusqueda" placeholder="Buscar una serie..." onkeyup="filtrarSeries()">
+    </div>
+    <div class="contenedor-principal">
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/buscando a nemo.webp" alt="AHS" loading="lazy"></a><p>BUSCANDO A NEMO (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/cars.jpg" alt="AHS" loading="lazy"></a><p>CARS (3 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/frozen.jpeg" alt="AHS" loading="lazy"></a><p>FROZEN (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/intensamente.webp" alt="AHS" loading="lazy"></a><p>INTENSAMENTE (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/kung fu panda.jpg" alt="AHS" loading="lazy"></a><p>KUNG FU PANDA (4 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/los croods.jpg" alt="AHS" loading="lazy"></a><p>LOS CROODS (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/madagascar.webp" alt="AHS" loading="lazy"></a><p>MADAGASCAR (3 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/moana.jpeg" alt="AHS" loading="lazy"></a><p>MOANA (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/shreek.jpg" alt="AHS" loading="lazy"></a><p>SHREEK (4 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/zootopia.jpg" alt="AHS" loading="lazy"></a><p>ZOOTOPIA (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/toy story.jpg" alt="AHS" loading="lazy"></a><p>TOY STORY (4 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/coc.jpg" alt="AHS" loading="lazy"></a><p>COCO</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/el rey leon.jpg" alt="AHS" loading="lazy"></a><p>EL REY LEÓN (3 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/la granaj.webp" alt="AHS" loading="lazy"></a><p>LA GRANJA</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/los pinguinos.jpg" alt="AHS" loading="lazy"></a><p>LOS PINGUINOS DE MADAGASCAR</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/luca.jpg" alt="AHS" loading="lazy"></a><p>LUCA (2 PELICULAS)</p></div>
+       <div class="soporte"><a href="descripcion/GFHDFTH5.html"><img src="imagen animados/up.jpg" alt="AHS" loading="lazy"></a><p>UP</p></div>
+
+
+
+        
+        
+
+        
+    </div>
+        
+
+    <script>
+        // Búsqueda más eficiente
+        function filtrarSeries() {
+            const input = document.getElementById('inputBusqueda').value.toLowerCase();
+            const series = document.querySelectorAll('.soporte');
+            series.forEach(serie => {
+                const nombreSerie = serie.querySelector('p').innerText.toLowerCase();
+                serie.style.display = nombreSerie.includes(input) ? "flex" : "none";
+            });
+        }
+        // Control del Cargador: Usamos DOMContentLoaded en lugar de load
+        // Esto hace que el loader desaparezca en cuanto el HTML esté listo, sin esperar a los posters
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 400);
+            }, 300); // Pequeño margen para suavidad
+        });
+    </script>
+</body>
+</html>
